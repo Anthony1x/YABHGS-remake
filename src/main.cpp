@@ -1,25 +1,31 @@
 #include "Game.h"
 #include "raylib.h"
-#include <string>
 
 int main(void)
 {
     Game* game = Game::GetInstance();
 
-    // all of this looks fucking horrible, just remove it after you confirmed it works
-    auto cppVer = std::string("C++ Standard: ") + std::to_string(__cplusplus);
-#if defined(__clang__)
-    auto compilerVer = std::string("Clang Version: ") + std::to_string(__clang_major__) + '.' +
-                       std::to_string(__clang_minor__) + '.' + std::to_string(__clang_patchlevel__);
-#elif defined(__GNUC__) || defined(__GNUG__)
-    auto compilerVer = std::string("GCC Version: ") + std::to_string(__GNUC__) + '.' + std::to_string(__GNUC_MINOR__) +
-                       '.' + std::to_string(__GNUC_PATCHLEVEL__);
-#endif
+    /*
+     * Simple TODO for the start...
+     * 1. Create player class
+     * 2. Reimplement player movement physics
+     * 3. Reimplement player shooting
+     * 4. The rest of the fucking owl
+     *
+     * Ways to improve upon the original
+     * 1. Code quality (duh)
+     * 1.1 comment the fucking code jesus
+     * 1.2 properly take advantage of OOP -> make it easy to extend functionality, like new enemy types
+     * 2. Framerate independence
+     * 3. Resolution scaling
+     *
+     * All in all, for now I only want to make quality of life additions.
+     * Once I'm finished (really shouldn't take too long), I may create a new branch where I add lots of shit
+     * This depends on my motivation and how well I reimplement the base.
+     */
 
     while (!WindowShouldClose())
     {
-        DrawText(cppVer.c_str(), 20, 20, 30, RAYWHITE);
-        DrawText(compilerVer.c_str(), 20, 45, 30, RAYWHITE);
         game->Update();
         game->Draw();
     }
