@@ -11,7 +11,9 @@ Game::Game()
 
     InitWindow(screenWidth, screenHeight, "Raylib C++");
 
-    SetTargetFPS(30);
+    int maxRefresh = GetMonitorRefreshRate(GetCurrentMonitor());
+
+    SetTargetFPS(maxRefresh * 2);
 
     const int middleX = screenWidth / 2;
     const int middleY = screenHeight / 2;
