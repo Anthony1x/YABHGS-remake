@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Helper.h"
 #include <raylib.h>
+#include "Projectile.h"
 
 Player::Player(Vector2 pos, float radius, int lifes) : pos(pos), radius(radius), lifes(lifes)
 {
@@ -37,7 +38,10 @@ void Player::Update()
 
     if (IsKeyDown(KeyboardKey(KEY_Y)))
     {
-        // Create projectile
+        // TODO: Create projectile, but how?
+        // Two projectile arrays, one for the player and one for enemies?
+        Projectile x = Projectile({20.f, 20.f}, {0.f, 0.f}, 10, 7, RED);
+        x.Draw();
     }
 }
 
