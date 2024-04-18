@@ -4,6 +4,9 @@
 class Helper
 {
   public:
+    static const int screenWidth = 600;
+    static const int screenHeight = 850;
+
     // This is a static class. Do not instantiate.
     Helper() = delete;
 };

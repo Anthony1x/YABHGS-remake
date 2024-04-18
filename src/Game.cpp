@@ -1,12 +1,13 @@
 #include "Game.h"
+#include "Helper.h"
 #include "raylib.h"
 
 Game* Game::instance = nullptr;
 
 Game::Game()
 {
-    const int screenWidth = 1280;
-    const int screenHeight = 720;
+    const int screenWidth = Helper::screenWidth;
+    const int screenHeight = Helper::screenHeight;
 
     InitWindow(screenWidth, screenHeight, "Raylib C++");
 
