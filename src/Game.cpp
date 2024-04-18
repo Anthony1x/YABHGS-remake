@@ -12,6 +12,11 @@ Game::Game()
     InitWindow(screenWidth, screenHeight, "Raylib C++");
 
     SetTargetFPS(30);
+
+    const int middleX = screenWidth / 2;
+    const int middleY = screenHeight / 2;
+
+    player = new Player({middleX, screenHeight - 27 - 50}, 27, 3);
 }
 
 Game* Game::GetInstance()
@@ -26,6 +31,7 @@ Game* Game::GetInstance()
 
 void Game::Update()
 {
+    player->Update();
 }
 
 void Game::Draw()
@@ -33,12 +39,9 @@ void Game::Draw()
     BeginDrawing();
     ClearBackground(BLACK);
 
-    const char* text = "Hello world!";
-    int fontSize = 50;
+    player->Draw();
 
-    int textSize = MeasureText(text, fontSize);
-    DrawText(text, GetRenderWidth() / 2 - (textSize / 2), GetRenderHeight() / 2, fontSize, WHITE);
-
+    DrawFPS(20, 20);
     EndDrawing();
 }
 

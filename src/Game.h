@@ -1,6 +1,6 @@
 #pragma once
+#include "Player.h"
 #include "raylib.h"
-
 class Game
 {
   public:
@@ -9,6 +9,7 @@ class Game
 
     void Update();
     void Draw();
+    Player* player;
 
   private:
     Game();                       // Private constructor to prevent external creation
