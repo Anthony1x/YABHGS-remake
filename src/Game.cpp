@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Helper.h"
 #include "raylib.h"
+#include <memory>
 
 Game* Game::instance = nullptr;
 
@@ -18,7 +19,7 @@ Game::Game()
     const int middleX = screenWidth / 2;
     const int middleY = screenHeight / 2;
 
-    player = new Player({middleX, screenHeight - 27 - 50}, 27, 3);
+    player = std::make_unique<Player>(Vector2{middleX, screenHeight - 27 - 50}, 27, 3);
 }
 
 Game* Game::GetInstance()

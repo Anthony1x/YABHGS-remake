@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "raylib.h"
+#include <memory>
 class Game
 {
   public:
@@ -9,7 +10,7 @@ class Game
 
     void Update();
     void Draw();
-    Player* player;
+    std::unique_ptr<Player> player;
 
   private:
     Game();                       // Private constructor to prevent external creation
