@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "raylib.h"
 #include <memory>
+#include <vector>
 class Game
 {
   public:

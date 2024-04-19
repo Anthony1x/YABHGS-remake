@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Helper.h"
-#include <raylib.h>
 #include "Projectile.h"
+#include <raylib.h>
 
 Player::Player(Vector2 pos, float radius, int lifes) : pos(pos), radius(radius), lifes(lifes)
 {
@@ -9,6 +9,11 @@ Player::Player(Vector2 pos, float radius, int lifes) : pos(pos), radius(radius),
 
 void Player::Update()
 {
+    if (cooldown >= 0.f)
+    {
+        cooldown -= GetFrameTime();
+    }
+
     const float movementSpeed = 400 * GetFrameTime();
     const int powerSpeed = 600 * GetFrameTime();
 
@@ -36,12 +41,12 @@ void Player::Update()
         pos.x += movementSpeed;
     }
 
-    if (IsKeyDown(KeyboardKey(KEY_Y)))
+    if (IsKeyDown(KeyboardKey(KEY_Z)) && cooldown <= 0.f)
     {
-        // TODO: Create projectile, but how?
-        // Two projectile arrays, one for the player and one for enemies?
-        Projectile x = Projectile({20.f, 20.f}, {0.f, 0.f}, 10, 7, RED);
-        x.Draw();
+        Projectile projectile = Projectile({pos.x, pos.y}, {0, -1}, 500, 5, RED);
+        projectiles.push_back(projectile);
+
+        cooldown = shootCooldown;
     }
 }
 

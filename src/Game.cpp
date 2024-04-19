@@ -35,6 +35,15 @@ Game* Game::GetInstance()
 void Game::Update()
 {
     player->Update();
+
+    for (auto it = player->projectiles.begin(); it != player->projectiles.end(); /* no increment here */)
+    {
+        Projectile& projectile = *it;
+        projectile.Update();
+
+        // Remove projectile if out of bounds, else increment
+        it = projectile.pos.y - projectile.radius < 0 ? player->projectiles.erase(it) : it + 1;
+    }
 }
 
 void Game::Draw()
@@ -43,6 +52,11 @@ void Game::Draw()
     ClearBackground(BLACK);
 
     player->Draw();
+
+    for (Projectile projectile : player->projectiles)
+    {
+        projectile.Draw();
+    }
 
     DrawFPS(20, 20);
     EndDrawing();
