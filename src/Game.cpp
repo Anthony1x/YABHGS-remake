@@ -12,7 +12,7 @@ Game::Game()
 
     InitWindow(screenWidth, screenHeight, "Raylib C++");
 
-    int maxRefresh = GetMonitorRefreshRate(GetCurrentMonitor());
+    const int maxRefresh = GetMonitorRefreshRate(GetCurrentMonitor());
 
     SetTargetFPS(maxRefresh * 2);
 
