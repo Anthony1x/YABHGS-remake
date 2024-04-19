@@ -14,9 +14,13 @@ class Game
     std::unique_ptr<Player> player;
 
   private:
-    Game();                       // Private constructor to prevent external creation
-    Game(const Game&);            // Delete copy constructor
-    Game& operator=(const Game&); // Delete assignment operator
+
+    // Private constructor to prevent external creation
+    Game();
+    // Delete copy constructor
+    Game(const Game&);
+    // Delete assignment operator
+    Game& operator=(const Game&);
 
     ~Game();
 
