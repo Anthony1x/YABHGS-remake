@@ -3,7 +3,7 @@
 #include "Projectile.h"
 #include <raylib.h>
 
-Player::Player(Vector2 pos, float radius, int lifes) : pos(pos), radius(radius), lifes(lifes)
+Player::Player(Vector2 pos, float radius, int hitPoints) : pos(pos), radius(radius), hitPoints(hitPoints)
 {
 }
 
@@ -20,7 +20,6 @@ void Player::Update()
     const int screenWidth = Helper::screenWidth;
     const int screenHeight = Helper::screenHeight;
 
-    // TODO: Handle opposite key pressed (Up and Down, Left and Right)
     if (IsKeyDown(KeyboardKey(KEY_UP)) && pos.y - radius > 0)
     {
         pos.y -= movementSpeed;

@@ -8,7 +8,7 @@ class Player
     Player(Vector2 pos, float radius, int lifes);
     Vector2 pos;
     float radius;
-    int lifes;
+    int hitPoints;
 
     /*
      * Very magic number. According to my calculations, this should actually be .02f
