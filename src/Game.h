@@ -1,8 +1,12 @@
 #pragma once
+#include "Enemy.h"
+#include "EnemyFactory.h"
 #include "Player.h"
 #include "raylib.h"
 #include <memory>
+#include <random>
 #include <vector>
+
 class Game
 {
   public:
@@ -12,9 +16,11 @@ class Game
     void Update();
     void Draw();
     std::unique_ptr<Player> player;
+    std::unique_ptr<EnemyFactory> enemyFactory;
+
+    std::vector<Enemy> enemies;
 
   private:
-
     // Private constructor to prevent external creation
     Game();
     // Delete copy constructor
