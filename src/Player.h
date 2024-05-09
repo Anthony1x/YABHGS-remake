@@ -11,6 +11,7 @@ class Player
     int hitPoints;
 
     /*
+     * FIXME: Cooldown is sorta framerate-dependent...
      * Very magic number. According to my calculations, this should actually be .02f
      * In the original code, shooting is polled every 2nd frame.
      * Since it ran at 100fps, that would mean you shoot at 50fps.

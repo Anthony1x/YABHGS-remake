@@ -6,12 +6,6 @@ int main(void)
     Game* game = Game::GetInstance();
 
     /*
-     * Simple TODO for the start...
-     * 1. Create player class
-     * 2. Reimplement player movement physics
-     * 3. Reimplement player shooting
-     * 4. The rest of the fucking owl
-     *
      * Ways to improve upon the original
      * 1. Code quality (duh)
      * 1.1 comment the fucking code jesus
