@@ -16,3 +16,20 @@ void Projectile::Draw()
 {
     DrawCircle((int)pos.x, (int)pos.y, radius, color);
 }
+
+bool Projectile::IsOutOfBounds()
+{
+    if (pos.y + radius < 0)
+        return true;
+
+    if (pos.y - radius > Helper::screenHeight)
+        return true;
+
+    if (pos.x - radius > Helper::screenHeight)
+        return true;
+
+    if (pos.x + radius < 0)
+        return true;
+
+    return false;
+}

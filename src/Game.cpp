@@ -45,7 +45,14 @@ void Game::Update()
         projectile.Update();
 
         // Remove projectile if out of bounds, else increment
-        it = projectile.pos.y - projectile.radius < 0 ? player->projectiles.erase(it) : it + 1;
+        if (projectile.IsOutOfBounds())
+        {
+            it = player->projectiles.erase(it);
+        }
+        else
+        {
+            it = it + 1;
+        }
     }
 
     // Modern C++ is kinda awesome

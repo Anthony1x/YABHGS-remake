@@ -37,7 +37,14 @@ void Enemy::Update(Player& player)
         projectile.Update();
 
         // Remove projectile if out of bounds, else increment
-        it = projectile.pos.y - projectile.radius < 0 ? projectiles.erase(it) : it + 1;
+        if (projectile.IsOutOfBounds())
+        {
+            it = projectiles.erase(it);
+        }
+        else
+        {
+            it = it + 1;
+        }
     }
 }
 
