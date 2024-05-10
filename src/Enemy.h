@@ -1,4 +1,5 @@
 #pragma once
+#include "Player.h"
 #include "Projectile.h"
 #include <vector>
 
@@ -6,7 +7,7 @@ class Enemy
 {
   public:
     Enemy(Vector2 pos, float radius, int lifes);
-    void Update(Vector2& playerPos);
+    void Update(Player& player);
     void Draw();
     Vector2 pos;
     float radius;

@@ -54,8 +54,8 @@ void Game::Update()
     if (enemy.has_value())
         enemies.push_back(enemy.value());
 
-    for (auto& enemy : enemies)
-        enemy.Update(player->pos);
+    for (Enemy& enemy : enemies)
+        enemy.Update(*player.get());
 }
 
 void Game::Draw()

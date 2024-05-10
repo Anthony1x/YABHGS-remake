@@ -1,3 +1,4 @@
+#pragma once
 #include "Projectile.h"
 #include <raylib.h>
 #include <vector>
