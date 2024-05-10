@@ -1,7 +1,4 @@
 #include "Player.h"
-#include "Helper.h"
-#include "Projectile.h"
-#include <raylib.h>
 
 Player::Player(Vector2 pos, float radius, int hitPoints) : pos(pos), radius(radius), hitPoints(hitPoints)
 {

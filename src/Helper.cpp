@@ -1,5 +1,4 @@
 #include "Helper.h"
-#include <cmath>
 
 Vector2 Helper::LookAt(Vector2 from, Vector2 at)
 {

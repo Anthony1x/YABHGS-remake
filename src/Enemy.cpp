@@ -1,7 +1,4 @@
 #include "Enemy.h"
-#include "Helper.h"
-#include "Projectile.h"
-#include <raylib.h>
 
 Enemy::Enemy(Vector2 pos, float radius, int hitPoints) : pos(pos), radius(radius), hitPoints(hitPoints)
 {

@@ -1,6 +1,8 @@
 #pragma once
+
 #include "Enemy.h"
 #include "EnemyFactory.h"
+#include "Helper.h"
 #include "Player.h"
 #include "raylib.h"
 #include <memory>

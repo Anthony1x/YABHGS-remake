@@ -1,6 +1,9 @@
 #pragma once
+
+#include "Helper.h"
 #include "Player.h"
 #include "Projectile.h"
+#include <raylib.h>
 #include <vector>
 
 class Enemy

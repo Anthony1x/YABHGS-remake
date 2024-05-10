@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Enemy.h"
+#include "Helper.h"
 #include <optional>
 #include <raylib.h>
 

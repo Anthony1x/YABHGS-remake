@@ -1,4 +1,6 @@
 #pragma once
+
+#include <cmath>
 #include <raylib.h>
 
 // Static class containing helper function that are useful in all contexts.

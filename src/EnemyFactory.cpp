@@ -1,5 +1,4 @@
 #include "EnemyFactory.h"
-#include "Helper.h"
 
 std::optional<Enemy> EnemyFactory::CreateEnemy()
 {
