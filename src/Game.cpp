@@ -11,7 +11,7 @@ Game::Game()
     const int screenWidth = Helper::screenWidth;
     const int screenHeight = Helper::screenHeight;
 
-    InitWindow(screenWidth, screenHeight, "Raylib C++");
+    InitWindow(screenWidth, screenHeight, "YABHGS Remake");
 
     const int maxRefresh = GetMonitorRefreshRate(GetCurrentMonitor());
 
