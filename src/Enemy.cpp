@@ -1,11 +1,27 @@
 #include "Enemy.h"
 
-Enemy::Enemy(Vector2 pos, float radius, int hitPoints) : pos(pos), radius(radius), hitPoints(hitPoints)
+Enemy::Enemy(Vector2 pos, float radius, int hitPoints)
+    : pos(pos), radius(radius), hitPoints(hitPoints)
 {
+    for (int i = 0; i < 4; i++)
+    {
+        if (GetRandomValue(0, 1) == 1)
+        {
+            break;
+        }
+
+        finalHeight += 50;
+    }
 }
 
 void Enemy::Update(Player& player)
 {
+    if (pos.y <= finalHeight)
+    {
+        pos.y += 200.f * GetFrameTime();
+        return;
+    }
+
     if (cooldown >= 0.f)
     {
         cooldown -= GetFrameTime();

@@ -19,6 +19,7 @@ class Enemy
     std::vector<Projectile> projectiles;
 
   private:
-    const float shootCooldown = .5f;
+    float shootCooldown = .5f;
     float cooldown = 0.f;
+    int finalHeight = 100;
 };

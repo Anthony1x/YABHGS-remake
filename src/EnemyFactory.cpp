@@ -8,7 +8,7 @@ std::optional<Enemy> EnemyFactory::CreateEnemy()
         return {};
     }
 
-    if (cooldown <= 0.f)
+    if (cooldown < 0.f)
     {
         cooldown = enemyCreationCooldown;
 
@@ -20,7 +20,7 @@ std::optional<Enemy> EnemyFactory::CreateEnemy()
             float enemyRadius = 20.f;
             float enemyPosX = GetRandomValue(enemyRadius, Helper::screenWidth - enemyRadius);
 
-            return Enemy({enemyPosX, 100}, enemyRadius, 20);
+            return Enemy({enemyPosX, -20}, enemyRadius, 20);
         }
     }
 
