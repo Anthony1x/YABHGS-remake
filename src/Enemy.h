@@ -12,6 +12,7 @@ class Enemy
     Enemy(Vector2 pos, float radius, int lifes);
     void Update(Player& player);
     void Draw();
+    bool Hurt();
     Vector2 pos;
     float radius;
     int hitPoints;

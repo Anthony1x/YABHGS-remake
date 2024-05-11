@@ -33,21 +33,54 @@ Game* Game::GetInstance()
 
 void Game::Update()
 {
+    // Update Player and Enemy positions first, so that collision calculation is up to date
     player->Update();
 
-    for (auto it = player->projectiles.begin(); it != player->projectiles.end(); /* no increment here */)
+    for (Enemy& enemy : enemies)
+    {
+        enemy.Update(*player.get());
+    }
+
+    for (auto it = player->projectiles.begin(); it != player->projectiles.end();
+         /* no increment here */)
     {
         Projectile& projectile = *it;
+
         projectile.Update();
 
-        // Remove projectile if out of bounds, else increment
-        if (projectile.IsOutOfBounds())
+        bool projectileCollided = false;
+
+        for (auto it2 = enemies.begin(); it2 != enemies.end(); /* no increment here */)
+        {
+            Enemy& enemy = *it2;
+
+            // Nothing to do if projectile didn't collide with the enemy.
+            if (!CheckCollisionCircles(projectile.pos, projectile.radius, enemy.pos, enemy.radius))
+            {
+                ++it2;
+                continue;
+            }
+
+            projectileCollided = true;
+
+            if (enemy.Hurt())
+            {
+                it2 = enemies.erase(it2);
+            }
+            else
+            {
+                ++it2;
+            }
+        }
+
+        // Remove projectile it collided or if out of bounds, else increment
+        if (projectileCollided == true || projectile.IsOutOfBounds())
         {
             it = player->projectiles.erase(it);
         }
         else
         {
-            it = it + 1;
+            ++it;
         }
     }
 
@@ -55,10 +88,9 @@ void Game::Update()
     std::optional<Enemy> enemy = enemyFactory->CreateEnemy();
 
     if (enemy.has_value())
+    {
         enemies.push_back(enemy.value());
-
-    for (Enemy& enemy : enemies)
-        enemy.Update(*player.get());
+    }
 }
 
 void Game::Draw()

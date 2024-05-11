@@ -49,3 +49,10 @@ void Enemy::Draw()
 {
     DrawCircle(pos.x, pos.y, radius, GREEN);
 }
+
+bool Enemy::Hurt()
+{
+    hitPoints -= 1;
+
+    return hitPoints < 0;
+}
