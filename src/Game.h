@@ -4,7 +4,10 @@
 #include "EnemyFactory.h"
 #include "Helper.h"
 #include "Player.h"
+#include "gui.h"
 #include "raylib.h"
+#include <algorithm>
+#include <cstdint>
 #include <memory>
 #include <random>
 #include <vector>
@@ -21,6 +24,8 @@ class Game
     std::unique_ptr<EnemyFactory> enemyFactory;
 
     std::vector<Enemy> enemies;
+
+    gui gui;
 
   private:
     // Private constructor to prevent external creation

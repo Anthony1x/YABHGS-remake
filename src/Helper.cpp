@@ -11,3 +11,10 @@ Vector2 Helper::Normalize(Vector2 vector)
 
     return {vector.x / length, vector.y / length};
 }
+
+std::string Helper::FloatToString(float f, uint8_t precision)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(precision) << f;
+    return stream.str();
+}

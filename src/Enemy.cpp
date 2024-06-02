@@ -1,7 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy(Vector2 pos, float radius, int hitPoints)
-    : pos(pos), radius(radius), hitPoints(hitPoints)
+Enemy::Enemy(Vector2 pos, float radius, int hitPoints) : pos(pos), radius(radius), hitPoints(hitPoints)
 {
     for (int i = 0; i < 4; i++)
     {

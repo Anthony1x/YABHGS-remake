@@ -1,4 +1,6 @@
 #include "Game.h"
+#include "Projectile.h"
+#include "gui.h"
 
 Game* Game::instance = nullptr;
 
@@ -11,7 +13,7 @@ Game::Game()
 
     const int maxRefresh = GetMonitorRefreshRate(GetCurrentMonitor());
 
-    SetTargetFPS(maxRefresh * 2);
+    SetTargetFPS(360);
 
     const int middleX = screenWidth / 2;
     const int middleY = screenHeight / 2;
@@ -41,23 +43,22 @@ void Game::Update()
         enemy.Update(*player.get());
     }
 
-    for (auto it = player->projectiles.begin(); it != player->projectiles.end();
-         /* no increment here */)
+    auto projectileIt = player->projectiles.begin();
+    while (projectileIt != player->projectiles.end())
     {
-        Projectile& projectile = *it;
+        Projectile& projectile = *projectileIt;
 
         projectile.Update();
 
         bool projectileCollided = false;
-
-        for (auto it2 = enemies.begin(); it2 != enemies.end(); /* no increment here */)
+        auto enemyIt = enemies.begin();
+        while (enemyIt != enemies.end())
         {
-            Enemy& enemy = *it2;
+            Enemy& enemy = *enemyIt;
 
-            // Nothing to do if projectile didn't collide with the enemy.
             if (!CheckCollisionCircles(projectile.pos, projectile.radius, enemy.pos, enemy.radius))
             {
-                ++it2;
+                ++enemyIt; // Move to next enemy if no collision
                 continue;
             }
 
@@ -65,22 +66,25 @@ void Game::Update()
 
             if (enemy.Hurt())
             {
-                it2 = enemies.erase(it2);
+                enemyIt = enemies.erase(enemyIt);
+
+                gui.kills++;
+                gui.score += 10;
             }
             else
             {
-                ++it2;
+                ++enemyIt; // Move to next enemy otherwise
             }
         }
 
-        // Remove projectile it collided or if out of bounds, else increment
-        if (projectileCollided == true || projectile.IsOutOfBounds())
+        // Check if projectile should be removed
+        if (projectileCollided || projectile.IsOutOfBounds())
         {
-            it = player->projectiles.erase(it);
+            projectileIt = player->projectiles.erase(projectileIt);
         }
         else
         {
-            ++it;
+            ++projectileIt; // Move to next projectile
         }
     }
 
@@ -91,6 +95,8 @@ void Game::Update()
     {
         enemies.push_back(enemy.value());
     }
+
+    gui.Update();
 }
 
 void Game::Draw()
@@ -111,7 +117,7 @@ void Game::Draw()
             projectile.Draw();
     }
 
-    DrawFPS(20, 20);
+    gui.Draw();
     EndDrawing();
 }
 
